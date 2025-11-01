@@ -3,7 +3,7 @@
 
 python ingest.py \
   --json-file data/syndrome_knowledge_fixed.json \
-  --db-name syndrome_db_tcm_embedding_name_disease \
+  --db-name syndrome_db_tcm_embedding\
   --embedding-model custom:Qwen3-Embedding-0.6B-finetuned \
 
 python ingest.py \
