@@ -124,9 +124,6 @@ python evaluate_retrieval.py \
 # 單一實驗重新繪圖（輸出至檔案所在目錄）
 python generate_charts.py outputs/run_syndrome_db_5486/evaluation_results.json
 
-# 指定輸出目錄
-python generate_charts.py outputs/run_syndrome_db_5486/evaluation_results.json -o charts/
-
 # 批次處理 outputs 底下的所有實驗
 python generate_charts.py --batch outputs/
 
@@ -135,3 +132,43 @@ python generate_charts.py --compare outputs/exp1 outputs/exp2
 ```
 
 在比較模式下會額外產生 `ranking_cumulative_comparison.png`，並於終端列出各個 Recall@K 的差異。
+
+
+## 資料來源與授權（Data Sources & License）
+- 上游來源：Borororo/ZY-BERT（<https://github.com/Borororo/ZY-BERT>）  
+  - 取得版本（commit/tag）：`72a89518392ec28f5dc1c8ed252a6c127ca2145b`  
+  - 存取日期： `2025-11-01`  
+  - 授權：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+  - 本專案資料屬 **上游的衍生資料**，以與上游相容之授權釋出；使用與再散布需遵守上游條款（例如：非商業、需標註、相同方式分享等，如適用）。
+
+### 本專案釋出的檔案與處理
+| 檔名 | 來源（來自 ZY-BERT） | 我們的修補／轉換 | 可重現指令 |
+|---|---|---|---|
+| `data/syndrome_knowledge_fixed.json` | `syndrome_knowledge.json` | 將欄位名稱 `Common_isease` 更正為 `Common_disease`|
+| `data/tcm_sd_test_rc_direct.json` | `test.json` + `syndrome_vocab.txt` | 使用本庫轉換腳本產生 **direct** 格式 | `python tcm_sd_prompt_generator.py --format direct --input data/test.json --vocab_path data/syndrome_vocab.txt --output data/tcm_sd_test_rc_direct.json` |
+
+> 註：本庫僅釋出**結構化／轉換後**內容；不包含未經授權的原文段落。若需完整原始資料，請依上游規範自行取得。
+
+
+### 引用（Citations）
+- **TCM-SD 論文**  
+```bibtex
+@inproceedings{mucheng-etal-2022-tcm,
+  title = "{TCM}-{SD}: A Benchmark for Probing Syndrome Differentiation via Natural Language Processing",
+  author = "Ren, Mucheng  and
+    Huang, Heyan  and
+    Zhou, Yuxiang  and
+    Cao, Qianwen  and
+    Bu, Yuan  and
+    Gao, Yang",
+  booktitle = "Proceedings of the 21st Chinese National Conference on Computational Linguistics",
+  month = oct,
+  year = "2022",
+  address = "Nanchang, China",
+  publisher = "Chinese Information Processing Society of China",
+  url = "https://aclanthology.org/2022.ccl-1.80",
+  pages = "908--920",
+  abstract = "{``}Traditional Chinese Medicine (TCM) is a natural, safe, and effective therapy that has spread and been applied worldwide. The unique TCM diagnosis and treatment system requires a comprehensive analysis of a patient{'}s symptoms hidden in the clinical record written in free text. Prior studies have shown that this system can be informationized and intelligentized with the aid of artificial intelligence (AI) technology, such as natural language processing (NLP). However, existing datasets are not of sufficient quality nor quantity to support the further development of data-driven AI technology in TCM. Therefore, in this paper, we focus on the core task of the TCM diagnosis and treatment system{---}syndrome differentiation (SD){---}and we introduce the first public large-scale benchmark for SD, called TCM-SD. Our benchmark contains 54,152 real-world clinical records covering 148 syndromes. Furthermore, we collect a large-scale unlabelled textual corpus in the field of TCM and propose a domain-specific pre-trained language model, called ZYBERT. We conducted experiments using deep neural networks to establish a strong performance baseline, reveal various challenges in SD, and prove the potential of domain-specific pre-trained language model. Our study and analysis reveal opportunities for incorporating computer science and linguistics knowledge to explore the empirical validity of TCM theories.{''}",
+  language = "English",
+}
+```

@@ -56,7 +56,7 @@ EMBEDDING_PROVIDERS = {
             "Qwen3-Embedding-4B-finetuned"
         ],
         "default": "Qwen3-Embedding-0.6B-finetuned",
-        "base_url": "http://localhost:8002/v1"
+        "base_url": "http://localhost:8000/v1"
     },
     "huggingface": {
         "models": [

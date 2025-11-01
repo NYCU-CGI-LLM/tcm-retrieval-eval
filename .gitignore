@@ -15,10 +15,6 @@ wheels/
 chroma_dbs/
 !chroma_dbs/.gitkeep
 
-# data
-data/
-!data/.gitkeep
-
 outputs/
 !outputs/.gitkeep
 
