@@ -1,0 +1,26 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.pytest_cache/
+.python-version
+
+# Virtual environments
+.venv
+
+# db
+chroma_dbs/
+!chroma_dbs/.gitkeep
+
+# data
+data/
+!data/.gitkeep
+
+outputs/
+!outputs/.gitkeep
+
+.env
+
